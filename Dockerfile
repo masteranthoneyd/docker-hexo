@@ -1,19 +1,20 @@
 FROM ubuntu:latest
 
-ENV GIT_USER_NAME=yangbingdong GIT_USER_MAIL=yangbingdong1994@gmail.com BLOG_PATH=/root/blog NODE_VERSION=6
+ENV BLOG_PATH /root/blog
+ENV NODE_VERSION 6
 
-MAINTAINER $GIT_USER_NAME , $GIT_USER_MAIL
+MAINTAINER yangbingdong , yangbingdong1994@gmail.com
 
 RUN \
     apt-get update -y && \
-    apt-get install -y git curl libpng-dev && \
+    apt-get install -y git 
+    curl \
+    libpng-dev && \
     curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
-    apt-get autoclean && \
+	apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    git config --global user.name $GIT_USER_NAME && \
-    git config --global user.email $GIT_USER_MAIL && \
     npm install -g hexo-cli
 
 WORKDIR $BLOG_PATH
@@ -21,5 +22,9 @@ WORKDIR $BLOG_PATH
 VOLUME ["$BLOG_PATH", "/root/.ssh"]
 
 EXPOSE 4000
+
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ['/bin/bash']
