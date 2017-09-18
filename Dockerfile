@@ -1,13 +1,13 @@
-FROM ubuntu:16.04
+FROM ubuntu:lastest
 
-ENV GIT_USER_NAME=yangbingdong GIT_USER_MAIL=yangbingdong1994@gmail.com BLOG_PATH=/root/blog
+ENV GIT_USER_NAME=yangbingdong GIT_USER_MAIL=yangbingdong1994@gmail.com BLOG_PATH=/root/blog NODE_VERSION=6
 
 MAINTAINER $GIT_USER_NAME , $GIT_USER_MAIL
 
 RUN \
     apt-get update -y && \
     apt-get install -y git curl libpng-dev && \
-    curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
     apt-get autoclean && \
