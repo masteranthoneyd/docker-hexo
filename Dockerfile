@@ -7,9 +7,7 @@ MAINTAINER yangbingdong , yangbingdong1994@gmail.com
 
 RUN \
     apt-get update -y && \
-    apt-get install -y git 
-    curl \
-    libpng-dev && \
+    apt-get install -y git curl libpng-dev && \
     curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \

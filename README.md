@@ -15,3 +15,8 @@ docker exec -it $container /bin/bash
 # insite container
 hexo server
 ```
+
+# Environment variables
+
+- GIT_USER_NAME: your git user name
+- GIT_USER_MAIL: your git user mail
