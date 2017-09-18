@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 GIT_USER_NAME=${GIT_USER_NAME:-"yangbingdong"}
 
