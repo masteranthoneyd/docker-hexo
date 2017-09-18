@@ -11,7 +11,7 @@ RUN \
     curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
-	apt-get autoclean && \
+    apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     npm install -g hexo-cli
 
