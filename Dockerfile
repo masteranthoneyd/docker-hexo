@@ -10,7 +10,7 @@ RUN \
     curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
-	apt-get autoclean && \
+    apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     git config --global user.name $GIT_USER_NAME && \
     git config --global user.email $GIT_USER_MAIL && \
