@@ -1,4 +1,4 @@
-FROM ubuntu:lastest
+FROM ubuntu:latest
 
 ENV GIT_USER_NAME=yangbingdong GIT_USER_MAIL=yangbingdong1994@gmail.com BLOG_PATH=/root/blog NODE_VERSION=6
 
