@@ -11,14 +11,11 @@ ENV NODE_DIR /home/${USER_NAME}/nodejs
 RUN \
     apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y sudo && \
     apt-get install -y git && \
     apt-get install -y curl && \
     apt-get install -y libpng-dev && \
     groupadd $USER_NAME && \
     useradd -m -g $USER_NAME ${USER_NAME} && \
-    echo "${USER_NAME}:docker" | chpasswd && \
-    adduser ${USER_NAME} sudo && \
     apt-get clean && \
 	apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -45,6 +42,8 @@ RUN ln -s ${NODE_DIR}/bin/hexo /usr/local/bin/hexo && chmod -R 777 /home/${USER_
 VOLUME ["/home/${USER_NAME}/blog", "/home/${USER_NAME}/.ssh"]
 
 USER ${USER_NAME}
+
+RUN npm config set registry https://registry.npm.taobao.org/
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
