@@ -18,7 +18,8 @@ docker run -itd --name hexo -p 4000:4000 \
 -e GIT_USER_MAIL=your_git_mail \ 
 -v <hexo dir>:/home/hexo/blog \
 -v <your .ssh dir>:/home/hexo/.ssh \ 
-yangbingdong/docker-hexo:without-root
+yangbingdong/docker-hexo:without-root \
+/bin/bash
 ```
 
 ##### Then you can use hexo command in this container

@@ -13,7 +13,9 @@ NEW_USER_NAME=${NEW_USER_NAME:-ybd}
 
 /usr/sbin/groupmod -n ${NEW_USER_NAME} ${USER_NAME}
 
-cd /home/${USER_NAME}
+/usr/sbin/usermod -d /home/${USER_NAME} ${NEW_USER_NAME}
+
+# cd /home/${USER_NAME}
 
 git config --system user.name $GIT_USER_NAME
 
