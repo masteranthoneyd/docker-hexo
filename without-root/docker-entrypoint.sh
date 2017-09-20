@@ -21,5 +21,7 @@ git config --system user.name $GIT_USER_NAME
 
 git config --system user.email $GIT_USER_MAIL
 
-su ${NEW_USER_NAME} 
+USER_NAME=${NEW_USER_NAME}
+
+su ${USER_NAME}
 
