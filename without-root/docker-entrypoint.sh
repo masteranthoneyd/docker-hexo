@@ -13,7 +13,11 @@ NEW_USER_NAME=${NEW_USER_NAME:-ybd}
 
 /usr/sbin/groupmod -n ${NEW_USER_NAME} ${USER_NAME}
 
-/usr/sbin/usermod -d /home/${USER_NAME} ${NEW_USER_NAME}
+/usr/sbin/usermod -dm /home/${USER_NAME} ${NEW_USER_NAME}
+
+chown -R ${NEW_USER_NAME}.${NEW_USER_NAME} /home/${USER_NAME}/blog
+
+chmod -R 766 /home/${USER_NAME}/blog
 
 # cd /home/${USER_NAME}
 
