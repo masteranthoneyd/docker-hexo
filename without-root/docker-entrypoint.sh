@@ -1,12 +1,24 @@
 #!/bin/sh
 set -e
 
-GIT_USER_NAME=${GIT_USER_NAME:-"yangbingdong"}
+GIT_USER_NAME=${GIT_USER_NAME:-yangbingdong}
 
-GIT_USER_MAIL=${GIT_USER_MAIL:-"yangbingdong1994@gmail.com"}
+GIT_USER_MAIL=${GIT_USER_MAIL:-yangbingdong1994@gmail.com}
 
-git config --global user.name $GIT_USER_NAME
+NEW_USER_NAME=${NEW_USER_NAME:-ybd}
 
-git config --global user.email $GIT_USER_MAIL
+/usr/sbin/usermod -l ${NEW_USER_NAME} ${USER_NAME}
 
-exec "$@"
+/usr/sbin/usermod -c ${NEW_USER_NAME} ${NEW_USER_NAME}
+
+/usr/sbin/groupmod -n ${NEW_USER_NAME} ${USER_NAME}
+
+cd /home/${USER_NAME}
+
+git config --system user.name $GIT_USER_NAME
+
+git config --system user.email $GIT_USER_MAIL
+
+su - ${NEW_USER_NAME} 
+
+# -c "exec '$@'"
