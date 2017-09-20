@@ -3,7 +3,7 @@ FROM ubuntu:latest
 ENV BLOG_PATH /root/blog
 ENV NODE_VERSION 6
 
-MAINTAINER yangbingdong , yangbingdong1994@gmail.com
+MAINTAINER yangbingdong <yangbingdong1994@gmail.com>
 
 RUN \
     apt-get update -y && \

@@ -33,6 +33,8 @@ WORKDIR /home/${USER_NAME}/blog
 
 VOLUME ["/home/${USER_NAME}/blog", "/home/${USER_NAME}/.ssh"]
 
+EXPOSE 4000
+
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
