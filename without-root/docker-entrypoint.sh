@@ -9,7 +9,7 @@ GIT_USER_MAIL=${GIT_USER_MAIL:-yangbingdong1994@gmail.com}
 
 NEW_USER_NAME=${NEW_USER_NAME:-ybd}
 
-if[ "$FLAG"x = execute ]
+if[ "$FLAG"x = executex ]
 then
 
 /usr/sbin/usermod -l ${NEW_USER_NAME} ${USER_NAME}
