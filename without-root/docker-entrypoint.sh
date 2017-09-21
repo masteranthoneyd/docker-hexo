@@ -1,11 +1,16 @@
 #!/bin/sh
 set -e
 
+FLAG=${FLAG:-execute}
+
 GIT_USER_NAME=${GIT_USER_NAME:-yangbingdong}
 
 GIT_USER_MAIL=${GIT_USER_MAIL:-yangbingdong1994@gmail.com}
 
 NEW_USER_NAME=${NEW_USER_NAME:-ybd}
+
+if[ "$FLAG"x = execute ]
+then
 
 /usr/sbin/usermod -l ${NEW_USER_NAME} ${USER_NAME}
 
@@ -21,7 +26,9 @@ git config --system user.name $GIT_USER_NAME
 
 git config --system user.email $GIT_USER_MAIL
 
-USER_NAME=${NEW_USER_NAME}
+FLAG=invalid
 
-su ${USER_NAME}
+su ${NEW_USER_NAME}
+
+fi
 
