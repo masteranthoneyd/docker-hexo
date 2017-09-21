@@ -1,4 +1,2 @@
-docker run -itd --name hexo -p 4000:4000 -e NEW_USER_NAME=ybd -v /home/ybd/git-repo/blog:/home/hexo/blog -v /home/ybd/.ssh:/home/hexo/.ssh yangbingdong/docker-hexo:without-root /bin/bash
-
-echo "alias hexo='docker attach hexo'" >> ./zshrc
+NAME=ybd && BLOG=/home/ybd/GitRepo/blog && SSH=/home/ybd/.ssh && docker run -itd --name hexo -p 4000:4000 -e NEW_USER_NAME=${NAME} -v ${BLOG}:/home/hexo/blog -v ${SSH}:/home/hexo/.ssh yangbingdong/docker-hexo:without-root /bin/bash && echo "alias hexo-docker='docker exec -it hexo su ${NAME}'" >> ~/.zshrc && source ~/.zshrc
 
