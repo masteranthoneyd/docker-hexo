@@ -2,9 +2,6 @@ FROM ubuntu:latest
 
 MAINTAINER yangbingdong <yangbingdong1994@gmail.com>
 
-ENV GIT_USER_NAME ${GIT_USER_NAME:-yangbingdong}
-ENV GIT_USER_MAIL ${GIT_USER_MAIL:-yangbingdong1994@gmail.com}
-
 ENV USER_NAME hexo
 ENV NODE_VERSION 8.5.0
 ENV NODE_DIR /home/${USER_NAME}/nodejs

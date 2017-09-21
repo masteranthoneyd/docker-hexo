@@ -24,7 +24,7 @@ yangbingdong/docker-hexo:without-root \
 
 ##### Then you can use hexo command in this container
 ```
-docker exec -it $container /bin/bash
+docker exec -it $container su your_user_name
 
 ## insite container
 hexo server
