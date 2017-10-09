@@ -2,9 +2,10 @@ FROM ubuntu:latest
 
 MAINTAINER yangbingdong <yangbingdong1994@gmail.com>
 
-ENV USER_NAME hexo
-ENV NODE_VERSION 8.5.0
-ENV NODE_DIR /home/${USER_NAME}/nodejs
+ENV \
+    USER_NAME=hexo \
+    NODE_VERSION=8.5.0 \
+    NODE_DIR=/home/${USER_NAME}/nodejs
 
 RUN \
     apt-get update -y && \
