@@ -1,28 +1,40 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 MAINTAINER yangbingdong <yangbingdong1994@gmail.com>
 
-RUN \
-    cd /root && \
-    apt-get update && \
-    apt-get upgrade && \
-    apt-get install -y wget git && \
-    wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh && \
-    export NVM_DIR="$HOME/.nvm" && \
-    \. "$NVM_DIR/nvm.sh" && \
-    nvm install --lts && \
-    echo "nodejs version is: $(node -v) and npm version is $(npm -v)" && \
-    npm install -g hexo-cli && \
-    hexo init hexo && \
-    cd hexo && \
-    npm install && \
-    apt autoclean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+USER root
+
+ENV NODE_VERSION 8.9.4
+ENV NODE_DIR /opt/nodejs
+ENV HOXO_DIR /root/hexo
+
+RUN apt-get update && \
+	apt-get install -y git curl && \
+	mkdir ${NODE_DIR} && \
+	curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz | tar xvzf - -C ${NODE_DIR} --strip-components=1 
+     
+ENV PATH $PATH:${NODE_DIR}/bin
+
+RUN npm install -g hexo-cli
+
+ENV PATH $PATH:${NODE_DIR}/bin
+
+RUN cd /root && \
+	hexo init hexo && \
+	cd hexo && \
+	git clone https://github.com/iissnan/hexo-theme-next themes/next && \
+	npm install && \
+	apt-get clean && \
+	apt-get autoremove -y && \
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+VOLUME ["/root/hexo/source/_posts"] 
 
 WORKDIR /root/hexo
 
-VOLUME ["/root/hexo/source/_posts"]
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-EXPOSE 4000
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ['hexo','-s']
+
+
